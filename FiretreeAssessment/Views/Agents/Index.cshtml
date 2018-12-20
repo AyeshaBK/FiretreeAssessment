@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<FiretreeAssessment.Models.Agent>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container body-content">
+    <br />
+    <h2>Agents</h2>
+    <hr />
+    <div class="btn btn-success buttons">
+        @Html.ActionLink("Create New", "Create")
+    </div>
+    <br /><br />
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>
+                Image
+            </th>
+            <th>
+                @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Cellphone
+            </th>
+            <th>
+                Email Address
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style=" width:100px; height:100px ">
+                    <img src="@Url.Content(item.ImagePath)" width="100" height="100" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cellphone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AgentId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.AgentId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AgentId })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <br />
+    @*PAGING*@
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+    <div class="btn btn-default">
+        @Html.ActionLink("Back", "Index", "Home")
+    </div>
+    <br /><br />
+</div>

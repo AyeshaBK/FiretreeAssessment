@@ -1,0 +1,48 @@
+﻿@model FiretreeAssessment.Models.Listing
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container body-content">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Details</h2><br />
+            <table class="detail table table-striped">
+                <tr>
+                    <td rowspan="8" style="width: 260px "><img src="@Url.Content(Model.ImagePath)" width="230" height="270" /></td>
+                    <th>@Html.DisplayNameFor(model => model.Price)</th>
+                    <td>@Html.DisplayFor(model => model.Price)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Bedrooms)</th>
+                    <td>@Html.DisplayFor(model => model.Bedrooms)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.MarketingHeading)</th>
+                    <td>@Html.DisplayFor(model => model.MarketingHeading)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.RefNumber)</th>
+                    <td>@Html.DisplayFor(model => model.RefNumber)</td>
+                </tr>
+                <tr>
+                    <th> @Html.DisplayNameFor(model => model.Suburb)</th>
+                    <td>@Html.DisplayFor(model => model.Suburb)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <td>@Html.DisplayFor(model => model.Description)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                    <td>@Html.DisplayFor(model => model.Agent.Email)</td>
+                </tr>
+            </table>
+        </div>
+        <!-----CONTACT FORM----->
+        <div class="col-md-4">
+            @{Html.RenderAction("Contact");}
+        </div>
+    </div>
+</div>

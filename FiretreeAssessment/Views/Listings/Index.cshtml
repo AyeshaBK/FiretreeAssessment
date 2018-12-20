@@ -1,0 +1,94 @@
+﻿@model PagedList.IPagedList<FiretreeAssessment.Models.Listing>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container body-content">
+    <br />
+    <h2>Listings</h2>
+    <hr />
+    <div class="btn btn-success buttons">
+        @Html.ActionLink("Create", "Create")
+    </div>
+    <br /><br />
+    <table class="table  table-bordered table-striped">
+        <tr>
+            <th>
+                Image
+            </th>
+            <th>
+                Suburb
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Number <br /> of Bedrooms
+            </th>
+            <th>
+                Reference Number
+            </th>
+            <th>
+                Marketing Heading
+            </th>
+            <th>
+                Description
+            </th>
+
+            <th>
+                Agent Email
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@Url.Content(item.ImagePath)" width="100" height="100" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Suburb)
+                </td>
+                <td>
+                    R @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bedrooms)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RefNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MarketingHeading)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Agent.Email)
+                </td>
+                <td>
+
+                    @Html.ActionLink("Details", "Details", new { id = item.ListingId })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    <!-----PAGING----->
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+    <div class="btn btn-default">
+        @Html.ActionLink("Back", "Index", "Home")
+    </div>
+    <br /><br />
+
+</div>

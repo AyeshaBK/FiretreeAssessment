@@ -1,0 +1,136 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="~/Content/Site.css">
+
+    @Scripts.Render("~/bundles/modernizr")
+    
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <!-----NAV BAR----->
+    <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Places2Go", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Search", "Search", "Listings")</li>
+                    @Html.Partial("_LoginPartial")
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <!-----HOME PAGE----->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="../Backgrounds/pic3.png" />
+                <div class="carousel-caption">
+                    <h1>begin the search for your next destination</h1>
+                    <br />
+                    <button type="button" class="btn btn-success start">@Html.ActionLink("Get Started", "Search", "Listings")</button>
+                </div>
+            </div><!-----END ACTIVE----->
+            <div class="item">
+                <img src="../Backgrounds/pic2.png" />
+            </div>
+            <div class="item">
+                <img src="../Backgrounds/pic1.png" />
+            </div>
+        </div>
+
+        <!-----SLIDER CONTROLS----->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div><!-----END SLIDER----->
+
+    <table class=" links text-center">
+        <tr>
+            <td>
+                <h4 class="link" style="background-color:#0094ff">@Html.ActionLink("Add an Agent", "Create", "Agents") </h4>
+            </td>
+            <td>
+                <h4 class="link" style="background-color:#37ba00">@Html.ActionLink("Add a Listing", "Create", "Listings")</h4>
+            </td>
+            <td>
+                <h4 class="link" style="background-color:#f53bdb">@Html.ActionLink("Search", "Search", "Listings")</h4>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4 class="link" style="background-color:#e96b0d">@Html.ActionLink("Show Agents", "Index", "Agents")</h4>
+            </td>
+            <td>
+                <h4 class="link" style="background-color:#b60606">@Html.ActionLink("Show Listings", "Index", "Listings")</h4>
+            </td>
+            <td>
+                <h4 class="link" style="background-color:#4c00ad">@Html.ActionLink("Show Leads", "Index", "Leads")</h4>
+            </td>
+        </tr>
+    </table>
+
+    <!-----FOOTER----->
+    <footer class="container-fluid text-center">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>Contact Us</h3>
+                <br />
+                <h5>
+                    Email: ayesha.b.k16@gmail.com<br />
+                    Cell : 083 731 1586
+                </h5>
+            </div>
+            <div class="col-sm-4">
+                <h3>Connect</h3>
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-google"></a>
+                <a href="#" class="fa fa-linkedin"></a>
+                <a href="#" class="fa fa-youtube"></a>
+            </div>
+            <div class="col-sm-4">
+                <img src="" class="icon" />
+            </div>
+        </div>
+        <br /><br />
+        <p>&copy; @DateTime.Now.Year - My Firetree Assessment</p>
+    </footer>
+</body>
+</html>
+

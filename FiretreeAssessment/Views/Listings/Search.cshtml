@@ -1,0 +1,47 @@
+﻿@model FiretreeAssessment.Models.Listing
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<!------SEARCH PAGE--------->
+
+<div class="item active">
+    <img src="../Backgrounds/map2.png" class="bg" />
+    <div id="searchHeading">
+        <h1>search for availability</h1>
+        <br />
+        @using (Html.BeginForm("Search", "Listings", FormMethod.Post))
+        {
+            <table class="searchTable">
+                <tr>
+                    <td class="column" style="text-align:left">
+                        <label class="control-label">Suburb</label><br />
+                        @*GET SUBURBS*@
+                        @Html.DropDownList("suburb", null, "select", htmlAttributes: new { @class = "form-control clear" })
+                    </td>
+                    <td class="column" style="text-align:left">
+                        <label class="control-label">Price</label><br />
+                        @*GET PRICES*@
+                        @Html.DropDownList("price", null, "select", htmlAttributes: new { @class = "form-control clear" })
+                    </td>
+                    <td class="column" style="text-align:left">
+                        <label class="control-label">No. of Bedrooms</label>
+                        @*GET NO OF BEDROOMS*@
+                        @Html.DropDownList("beds", null, "select", htmlAttributes: new { @class = "form-control clear" })
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lastcolumn" colspan="3">
+                        <input type="submit" value="Search" class="btn btn-warning search" />
+
+                    </td>
+                </tr>
+            </table>
+
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
